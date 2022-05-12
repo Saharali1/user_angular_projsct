@@ -1,0 +1,58 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "Name": "t-shirt",
+      "Quantity": 0,
+      "Price": 200,
+      "Img": "assets/product-07.jpg",
+      "CateogryID": 1
+    },
+    {
+      "id": 3,
+      "Name": "dress",
+      "Quantity": 2,
+      "Price": 666,
+      "Img": "assets/product-09.jpg",
+      "CateogryID": 2
+    },
+    {
+      "id": 4,
+      "Name": "dress2",
+      "Quantity": 1,
+      "Price": 852,
+      "Img": "assets/product-10.jpg",
+      "CateogryID": 3
+    },
+    {
+      "id": 5,
+      "Name": "t-shirt3",
+      "Quantity": 0,
+      "Price": 100,
+      "Img": "assets/product-07.jpg",
+      "CateogryID": 1
+    },
+    {
+      "Name": "sssssssss",
+      "Quantity": 0,
+      "Price": 0,
+      "Img": "",
+      "CateogryID": "2",
+      "id": 8
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "Name": "t-shitrts"
+    },
+    {
+      "id": 2,
+      "Name": "dress"
+    },
+    {
+      "id": 3,
+      "Name": "dress2"
+    }
+  ]
+}

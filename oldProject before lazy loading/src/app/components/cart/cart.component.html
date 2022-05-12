@@ -1,0 +1,64 @@
+<ng-container *ngIf="CartList.length !=0">
+    <div class="card">
+      <div class="row">
+          <div class="col-md-8 cart">
+              <div class="title">
+                  <div class="row">
+                      <div class="col"><h4><b>Shopping Cart</b></h4></div>
+                      <div class="col align-self-center text-right text-muted">{{numberOfCartProducts}} Items</div>
+                  </div>
+              </div>
+              <div class="row border-top border-bottom" *ngFor="let item of CartList">
+                  <div class="row main align-items-center">
+                      <div class="col-2"><img class="img-fluid" [src]="item.ProductImg"></div>
+                      <div class="col">
+                          <div class="row text-muted">{{item.ProductName}}</div>
+                      </div>
+                      <div class="col">
+                          <input #Count type="number" class="form-control" value={{item.ProductCount}}
+                                min="1"  (change)="updateCartProductTotalPrice(item.ProductId,Count.value)">
+                      </div>
+                      <div class="col">{{item.ProductTotalPrice | currency: 'EGP' }}</div>
+                      <div class="col"><button class="btn btn-secondary" (click)="removeFromCart(item)">remove</button></div>
+                      </div>
+              </div>
+              <div class="col" ><button class="btn btn-secondary" (click)="removeAllCartProducts()">Remove all cart products</button></div>
+
+              <a routerLink="/Products" routerLinkActive="active"><div class="back-to-shop">&leftarrow;<span class="text-muted">Back to shop</span></div></a>
+          </div>
+          <div class="col-md-4 summary">
+              <div><h5><b>Summary</b></h5></div>
+              <hr>
+
+              <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                  <div class="col">TOTAL PRICE</div>
+                  <div class="col text-right">{{orderTotalPrice | currency: 'EGP'}}</div>
+              </div>
+              <button class="btn" (click)="makeOrder()">CHECKOUT</button>
+          </div>
+      </div>
+    </div>
+  <label for="">order total price : {{orderTotalPrice}}</label>
+</ng-container>
+
+<ng-container *ngIf="CartList.length ==0">
+  <div class="card">
+    <div class="row">
+        <div class="col-md-4 cart">
+          <div ></div>
+        </div>
+        <div class="col-md-4 cart">
+          <img src="assets/cart.png" style="width:200px ;" alt="" ><br>
+          Your Cart is Empty...
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 cart">
+        <div ></div>
+      </div>
+      <div class="col-md-4 cart">
+      <a routerLink="/Products" routerLinkActive="active"><div class="back-to-shop">&leftarrow;<span class="text-muted">Back to shop</span></div></a>
+      </div>
+    </div>
+  </div>
+</ng-container>

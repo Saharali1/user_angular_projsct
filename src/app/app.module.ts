@@ -23,6 +23,8 @@ import {MatDialogModule} from "@angular/material/dialog";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartDialogComponent } from './components/cart-dialog/cart-dialog.component';
 import { CartDialogChickOutComponent } from './components/product/cart-dialog-chick-out/cart-dialog-chick-out.component';
+import { SliderComponent } from './components/slider/slider.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 @NgModule({
@@ -44,7 +46,9 @@ import { CartDialogChickOutComponent } from './components/product/cart-dialog-ch
     RegisterComponent,
     AddProductComponent,
     CartDialogComponent,
-    CartDialogChickOutComponent
+    CartDialogChickOutComponent,
+    SliderComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

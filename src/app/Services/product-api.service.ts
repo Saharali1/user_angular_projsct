@@ -10,7 +10,9 @@ import { IProduct } from '../ViewModels/iproduct';
 export class ProductApiService {
   private httpOptions;
   token:any=localStorage.getItem("token");
+  categoryId:number;
   constructor(private httpClient:HttpClient) {
+    this.categoryId=0;
     this.httpOptions={
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -46,9 +48,13 @@ export class ProductApiService {
     JSON.stringify(product),this.httpOptions);
   }
 
-  deleteProduct(prdID:number)
+
+  setCategoryId(categotyID:number)
   {
-    return this.httpClient.delete<IProduct>(`${environment.ApiLocalURL}/product/${prdID}`,
-    this.httpOptions);
+    this.categoryId=categotyID;
+  }
+  getCategoryId()
+  {
+    return this.categoryId;
   }
 }

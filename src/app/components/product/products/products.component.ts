@@ -15,13 +15,12 @@ import { ProductDetailsComponent } from '../product-details/product-details.comp
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit ,OnChanges{
+export class ProductsComponent implements OnInit {
 
     myStore:Store;
     CartProduct:Icart;
     categoryList:ICategory[]=[];
     ProductList:IProduct[]=[];
-    url:string="";
     CartList:Icart[]=[]
     @Input() receivedSelCatID:number=0;
     @Output() onAddToCart:EventEmitter<Icart>;
@@ -41,22 +40,6 @@ export class ProductsComponent implements OnInit ,OnChanges{
                               ProductTotalPrice:0};
   }
 
-   newProductList:any=[];
-  ngOnChanges(changes: SimpleChanges): void
-  {
-    if(this.receivedSelCatID==0)
-    {
-      this.productapiservice.getAllProducts().subscribe(pl=>{
-        this.newProductList=pl;
-      });
-    }else
-    {
-      this.productapiservice.getProductsByCatID(this.receivedSelCatID).subscribe(pl=>{
-        this.newProductList=pl;
-      });
-    }
-
-  }
 
   updateCart(count:number,product:IProduct)
   {
@@ -86,24 +69,19 @@ export class ProductsComponent implements OnInit ,OnChanges{
   ngOnInit(): void
   {
     this.categoryService.getAllCategories().subscribe(pl=>{
-      console.log(pl);
       this.categoryList=pl;
     });
+    if(this.productapiservice.getCategoryId()==0)
+    {
+      this.productapiservice.getAllProducts().subscribe(pl=>{
+        this.ProductList=pl;
+      });
+    }else{
+      this.productapiservice.getProductsByCatID(this.productapiservice.getCategoryId()).subscribe(pl=>{
+        this.ProductList=pl;
+      });
+    }
 
-    this.productapiservice.getAllProducts().subscribe(pl=>{
-      this.ProductList=pl;
-    });
-
-    this.productapiservice.getAllProducts().subscribe(pl=>{
-      let x=pl;
-      for (let index = 0; index < x.length; index++) {
-        if(x[index].quantity>0)
-        {
-          this.newProductList.push(x[index]);
-          console.log(this.newProductList[index].quantity);
-        }
-      }
-    });
   }
 
   openProductDetails(pid:number)
@@ -117,58 +95,17 @@ export class ProductsComponent implements OnInit ,OnChanges{
     });
     // this.router.navigate(['/Products',pid]);
   }
-
-  decreaseQuentity(id:any)
-  {
-    console.log(id);
-
-    this.ProductList.forEach(function(obj) {
-      if (obj.id == id && obj.quantity>0) {
-          obj.quantity=obj.quantity-1;
-
-      }
-  });
-  }
-
-  EditProduct(productid:number)
-  {
-    this.router.navigate(['/EditProduct',productid]);
-  }
-
-  DeleteProduct(productId:number)
-  {
-    if(confirm("Are you sure to delete this product ")) {
-      this.productapiservice.deleteProduct(productId).subscribe(product=>{
-        console.log("deleted...");
-      });
-    }
-
-    if(this.receivedSelCatID==0)
-    {
-      this.productapiservice.getAllProducts().subscribe(pl=>{
-        this.newProductList=pl;
-      });
-    }else
-    {
-      this.productapiservice.getProductsByCatID(this.receivedSelCatID).subscribe(pl=>{
-        this.newProductList=pl;
-
-      });
-
-  }
-}
-
 categoryChanged(catId:any)
 {
   if(catId==0)
   {
     this.productapiservice.getAllProducts().subscribe(pl=>{
-      this.newProductList=pl;
+      this.ProductList=pl;
     });
   }else
   {
     this.productapiservice.getProductsByCatID(catId).subscribe(pl=>{
-      this.newProductList=pl;
+      this.ProductList=pl;
     });
 
   }

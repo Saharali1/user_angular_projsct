@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { IRegester } from '../ViewModels/i-regester';
 import { Ilogin } from '../ViewModels/ilogin';
 import { Iuser } from '../ViewModels/iuser';
 
@@ -18,9 +19,15 @@ export class AccountService {
       })}
    }
 
-  loginUser(user: Ilogin): Observable<Iuser>
+  loginUser(user: Ilogin): Observable<Ilogin>
   {
-        return this.httpClient.post<Iuser>(`${environment.ApiLocalURL}/Account/Login`,
+        return this.httpClient.post<Ilogin>(`${environment.ApiLocalURL}/Account/Login`,
+                                             JSON.stringify(user),this.httpOptions);
+  }
+
+  regesterUser(user: IRegester): Observable<IRegester>
+  {
+        return this.httpClient.post<IRegester>(`${environment.ApiLocalURL}/Account/RegisterUser`,
                                              JSON.stringify(user),this.httpOptions);
   }
 }

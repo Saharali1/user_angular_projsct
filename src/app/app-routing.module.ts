@@ -14,20 +14,19 @@ const routes: Routes = [
   {path: '', component:MainlayoutComponent, children: [
     {path:'',redirectTo:'/Home', pathMatch:'full'},
     {path:'Home',component:HomeComponent},
-    {path:'Aboutus',component:AboutUsComponent},
-    {path:'contactus',component:ContactUsComponent},
     // {path:'Products',component:ProductsComponent},
     {path:'AddProduct', component:AddProductComponent},
     {path:'EditProduct/:productId', component:AddProductComponent},
     {path:'admin/insertproduct', component:AddProductComponent},
-    {path:'cart', component:CartComponent},
     //  {path:'Products/:pid', component:ProductDetailsComponent},
     {
       path: 'Products',
       loadChildren: () => import('src/app/components/product/product.module').then(m => m.ProductModule)
     }
   ]},
-    //{path:'Order', component:CartComponent},
+  {path:'contactus',component:ContactUsComponent},
+  {path:'Aboutus',component:AboutUsComponent},
+    {path:'cart', component:CartComponent},
     {path:'login', component:LoginComponent},
     {path:'register', component:RegisterComponent},
     {path:'**', component:NotFoundComponent},

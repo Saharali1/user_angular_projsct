@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, OnInit, Output, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-
 import { CartService } from 'src/app/Services/cart.service';
 import { CategotyService } from 'src/app/Services/categoty.service';
 import { ProductApiService } from 'src/app/Services/product-api.service';

@@ -1,10 +1,68 @@
-<p>register works!</p>
-<h1>register</h1>
-<h1>register</h1>
-<h1>register</h1>
-<h1>register</h1>
-<h1>register</h1>
-<h1>register</h1>
-<h1>register</h1>
-<h1>register</h1>
-<h1>register</h1>
+<app-header></app-header>
+<br>
+<br>
+<br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+          <form #userFrm="ngForm" (ngSubmit)="regester()">
+            <div class="text-center mb-3">
+              <p>Regester</p>
+
+            </div>
+              <!-- user name input -->
+            <div class="form-outline mb-4">
+              <label class="form-label" for="loginName">User Name</label>
+              <input type="text" id="loginName" required minlength="3" class="form-control"
+                #userName="ngModel" [(ngModel)]="user.userName"
+                [class.is-valid]="userName.valid"
+                [class.is-invalid]="userName.invalid && userName.touched" name="first"
+                 placeholder="" >
+
+              <div [hidden]="userName.valid || userName.untouched">
+                <small *ngIf="userName.errors?.['required']" id="helpId" class="form-text text-muted d-block">Product Name is Required</small>
+                <small *ngIf="userName.errors?.['minlength']" id="helpId2" class="form-text text-muted d-block">Product Name must be 3 letters at least</small>
+              </div>
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+              <label class="form-label" for="loginPassword">Password</label>
+              <input type="password" id="loginPassword" class="form-control"
+              [(ngModel)]="user.password" name="password" />
+            </div>
+
+            <div class="form-outline mb-4">
+              <label class="form-label" >Confirm Password</label>
+              <input type="password"  class="form-control"
+               name="" />
+            </div>
+
+            <div class="form-outline mb-4">
+              <label class="form-label" for="email">E-mail</label>
+              <input type="email" id="email" class="form-control"
+              [(ngModel)]="user.email" name="email" />
+            </div>
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+            <!-- Register buttons -->
+            <div class="text-center">
+              <p>You have an account! <a routerLink="/login">login</a></p>
+            </div>
+          </form>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-3"></div>
+  </div>
+
+
+
+
+

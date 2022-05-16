@@ -16,26 +16,16 @@ import { ProductDetailsComponent } from '../product-details/product-details.comp
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-
-    myStore:Store;
     CartProduct:Icart;
     categoryList:ICategory[]=[];
     ProductList:IProduct[]=[];
     CartList:Icart[]=[]
-    @Input() receivedSelCatID:number=0;
-    @Output() onAddToCart:EventEmitter<Icart>;
 
   constructor(private productapiservice:ProductApiService,private router:Router,
       private categoryService:CategotyService,
       private cartService:CartService,
       private dialog:MatDialog)
   {
-    this.onAddToCart=new EventEmitter<Icart>();
-    this.myStore={
-      name:"shopingMinya",
-      branches:["minya","assuit"],
-      logo:"assets/icons/logo-01.png"
-    }
     this.CartProduct={ProductName:"",ProductPrice:0,ProductCount:0,ProductImg:"",ProductId:0,
                               ProductTotalPrice:0};
   }

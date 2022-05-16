@@ -24,18 +24,17 @@
         <div class="row">
           <div class="col-md-6 cart">
             <div >
-              <h2 class="card-title">{{item.name}}</h2>
-               <h3 class="card-title">{{item.price }}EGP</h3>
+              <h5 class="card-title">{{item.name}}</h5>
+               <h5 class="card-title">{{item.price }}EGP</h5>
             </div>
           </div>
           <div class="col-md-6 cart">
+            <!-- <h5 class="card-title" (click)="openProductDetails(item.id)">Details</h5> -->
             <button type="button" class="btn btn-secondary"
             [value]="item.id" (click)="openProductDetails(item.id)">Details</button>
-           <h3 class="card-title">avalable Quantity: {{item.quantity}}</h3>
+           <h5 class="card-title">avalable Quantity: {{item.quantity}}</h5>
            </div>
         </div>
-
-
         <div class="row">
           <div class="col-md-6 cart">
             <div >
@@ -43,7 +42,8 @@
             </div>
           </div>
           <div class="col-md-6 cart">
-            <button type="button" class="btn btn-secondary" (click)="updateCart(+Count.value,item)">Add to cart</button>
+              <!-- <h5 class="card-title" (click)="updateCart(+Count.value,item)">Add to cart</h5> -->
+              <button type="button" class="btn btn-secondary" (click)="updateCart(+Count.value,item)">Add to cart</button>
           </div>
         </div>
 

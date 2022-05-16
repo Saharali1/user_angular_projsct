@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CategotyService } from 'oldProject before lazy loading/src/app/Services/categoty.service';
+import { CategotyService } from 'src/app/Services/categoty.service';
 import { ProductApiService } from 'src/app/Services/product-api.service';
-import { ProductsService } from 'src/app/Services/products.service';
 import { ICategory } from 'src/app/ViewModels/icategory';
 
 @Component({

@@ -3,7 +3,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductApiService } from 'src/app/Services/product-api.service';
-import { ProductsService } from 'src/app/Services/products.service';
 import { IProduct } from 'src/app/ViewModels/iproduct';
 import { ProductsComponent } from '../products/products.component';
 
